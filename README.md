@@ -13,7 +13,7 @@ By understanding this example, you will be able to create tracking code for your
 - CMake > 3.14
 - ROOT 6
 - g++, gfortran
-- 
+
 ### Compiling
 
 Make a build directory and enter it.
