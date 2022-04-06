@@ -1,7 +1,7 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.14)
 project(MDMTracking)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 
 enable_language (Fortran)
 set (CMAKE_Fortran_FLAGS "-fPIC -finit-local-zero -falign-commons -fno-automatic")
@@ -29,7 +29,7 @@ add_executable(MDMTracking TrackingExample.C ${sources} ${headers})
 
 target_link_libraries(MDMTracking ${ROOT_LIBRARIES})
 
-set(TRACKING_SCRIPTS rayin.dat EnergyLoss.dat CarbonInCarbon.dat AlphaInCarbon.dat)
+set(TRACKING_SCRIPTS rayin.dat)
 foreach(_script ${TRACKING_SCRIPTS})
   configure_file(
     ${PROJECT_SOURCE_DIR}/dat/${_script}
