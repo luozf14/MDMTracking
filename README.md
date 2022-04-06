@@ -37,5 +37,5 @@ For this example, simply execute
 ```
 $ ./MDMTracking
 ```
-For your real run data analysis, you should read `TrackingExample.C` and `CMakeList.txt` and fully unserstand them. Then you will be able to write code for your case. 
+For your real run data analysis, you should read `TrackingExample.C` and `CMakeList.txt` and fully understand them. Then you will be able to write code for your case. 
 
