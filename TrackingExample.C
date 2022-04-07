@@ -2,9 +2,9 @@
 #include <vector>
 #include "MDMTrace.h"
 #include "MDMTraceFit.h"
-#include "Math/Minimizer.h"
-#include "Math/Factory.h"
-#include "Math/Functor.h"
+#include <Math/Minimizer.h>
+#include <Math/Factory.h>
+#include <Math/Functor.h>
 
 int main(int argc, char **argv)
 {
@@ -30,13 +30,12 @@ int main(int argc, char **argv)
     std::string minName = "Minuit2";
     std::string algoName = "Simplex";
     ROOT::Math::Minimizer *min = ROOT::Math::Factory::CreateMinimizer(minName, algoName);
-
     // set maximun function calls and tolerance
     min->SetMaxFunctionCalls(1000);
     min->SetTolerance(0.001);
 
     // set print info. 0 prints nothing, 1 prints something useful for debug
-    min->SetPrintLevel(0);
+    min->SetPrintLevel(1);
 
     // convert MDMTraceFit to a ROOT functor with 3 parameters
     // set initial minimization parameters value
