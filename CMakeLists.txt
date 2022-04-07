@@ -7,27 +7,23 @@ enable_language (Fortran)
 set (CMAKE_Fortran_FLAGS "-fPIC -finit-local-zero -falign-commons -fno-automatic")
 set (CMAKE_CXX_FLAGS "-fPIC")
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "$ENV{ROOTSYS}/etc/cmake")
-list(APPEND CMAKE_PREFIX_PATH $ENV{ROOTSYS})
-
 # Find ROOT
-find_package(ROOT REQUIRED)
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ROOT_CXX_FLAGS} -O3")
-include_directories(${ROOT_INCLUDE_DIRS} ${CMAKE_SOURCE_DIR})
-link_directories(${ROOT_LIBRARY_DIR})
+find_package(ROOT CONFIG REQUIRED)
+if(ROOT_FOUND) 
+    message ("ROOT found")
+    include_directories(${ROOT_INCLUDE_DIRS})
+else()
+    message (FATAL_ERROR "Cannot find ROOT")
+endif()
 
-include_directories(${PROJECT_SOURCE_DIR}/include
-				    ${CMAKE_CURRENT_SOURCE_DIR}/include)
+# build library libMDMTraceFit
+add_library (MDMTraceFit SHARED src/MDMTraceFit.cpp src/MDMTrace.cpp src/RAYTKIN1.F)
+target_include_directories(MDMTraceFit  PUBLIC ${PROJECT_SOURCE_DIR}/include)
 
-file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc ${PROJECT_SOURCE_DIR}/src/*.cpp ${PROJECT_SOURCE_DIR}/src/*.C ${PROJECT_SOURCE_DIR}/src/*.F)
-file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh ${PROJECT_SOURCE_DIR}/include/*.h)
-                    
-# add_library (MDMTrace SHARED src/MDMTrace.cpp src/RAYTKIN1.F)
-# target_link_libraries(MDMTrace c gfortran)
-
-add_executable(MDMTracking TrackingExample.C ${sources} ${headers})
-
-target_link_libraries(MDMTracking ${ROOT_LIBRARIES})
+# build executable file ${PROJECT_NAME} (MDMTracking)
+add_executable(${PROJECT_NAME} TrackingExample.C)
+target_include_directories(${PROJECT_NAME} PRIVATE  ${PROJECT_SOURCE_DIR}/include)
+target_link_libraries(${PROJECT_NAME} PRIVATE MDMTraceFit ROOT::MathCore)
 
 set(TRACKING_SCRIPTS rayin.dat)
 foreach(_script ${TRACKING_SCRIPTS})
