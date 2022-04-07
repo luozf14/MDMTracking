@@ -30,7 +30,7 @@ make
 $ make
 ```
 Now you will have one executable file `MDMTracking` and `rayin.dat` in `build/`.  
-Please be aware that `rayin.dat` is required input file for MDMTrace. Its location is hard-coded at line 99 in `src/RAYTKIN1.F`. By default, it is the same directory in which the executable file locates. For convenience, I add  line 32-39 in `CMakeList.txt` so that the `rayin.dat` will be automatically copied from `dat/` to `build/`.
+Please be aware that `rayin.dat` is required input file for MDMTrace. Its location is hard-coded at line 99 in `src/RAYTKIN1.F`. By default, it is the same directory in which the executable file locates. For convenience, I add some commands in `CMakeList.txt` so that the `rayin.dat` will be automatically copied from `dat/` to `build/`.
 
 ## How to use
 For this example, simply execute
