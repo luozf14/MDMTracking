@@ -25,6 +25,7 @@ add_executable(${PROJECT_NAME} TrackingExample.C)
 target_include_directories(${PROJECT_NAME} PRIVATE  ${PROJECT_SOURCE_DIR}/include)
 target_link_libraries(${PROJECT_NAME} PRIVATE MDMTraceFit ROOT::MathCore)
 
+# copy rayin.dat from dat/ to build/
 set(TRACKING_SCRIPTS rayin.dat)
 foreach(_script ${TRACKING_SCRIPTS})
   configure_file(
