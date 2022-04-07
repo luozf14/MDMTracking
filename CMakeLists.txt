@@ -28,9 +28,5 @@ target_link_libraries(${PROJECT_NAME} PRIVATE MDMTraceFit ROOT::MathCore)
 # copy rayin.dat from dat/ to build/
 set(TRACKING_SCRIPTS rayin.dat)
 foreach(_script ${TRACKING_SCRIPTS})
-  configure_file(
-    ${PROJECT_SOURCE_DIR}/dat/${_script}
-    ${PROJECT_BINARY_DIR}/${_script}
-    COPYONLY
-    )
+    configure_file(${PROJECT_SOURCE_DIR}/dat/${_script} COPYONLY)
 endforeach()
