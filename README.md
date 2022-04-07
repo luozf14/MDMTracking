@@ -10,8 +10,8 @@ By understanding this example, you will be able to create tracking code for your
 
 ### Prerequisites
 
-- CMake > 3.14
-- ROOT 6
+- CMake >= 3.5
+- ROOT >= 6.16
 - g++, gfortran
 
 ### Compiling
