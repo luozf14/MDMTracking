@@ -52,6 +52,7 @@ int main(int argc, char **argv)
 
     // get minimization result
     const double *xs = min->X();
+    // check if chi-square > 1
     if (min->MinValue() > 1)
         return kFALSE;
     Double_t scatteringEnergy = xs[0];
