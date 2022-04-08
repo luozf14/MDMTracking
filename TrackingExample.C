@@ -23,7 +23,7 @@ int main(int argc, char **argv)
     double Y1 = 1;
     double X2 = 1;
     double Y2 = 1;
-    std::vector<double> data = {X1, Y2, X2, Y2};
+    std::vector<double> data = {X1, Y1, X2, Y2};
     fcn->SetData(data);
 
     // set minimizer and algorithm
