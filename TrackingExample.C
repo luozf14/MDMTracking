@@ -46,6 +46,7 @@ int main(int argc, char **argv)
     min->SetVariable(1, "scatterAngleX", 35.3, 0.1);
     min->SetVariable(2, "scatterAngleY", 0.0, 0.1);
     // set minimization range, usually no need
+    // SetLimitedVariable(index, name, initial value, step, lower limit, upper limit)
     // min->SetLimitedVariable(1,"scatterAngleX",35.3, 0.1, 33.3, 37.3);
     min->Minimize();
 
